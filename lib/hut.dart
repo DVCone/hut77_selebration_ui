@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:hut_selebration_ui/button_widget.dart';
+import 'package:hut_selebration_ui/victory_widget.dart';
 
 class TimerPage extends StatefulWidget {
   const TimerPage({Key? key}) : super(key: key);
@@ -98,74 +100,4 @@ class _TimerPageState extends State<TimerPage> {
       );
     }
   }
-}
-
-class VictoryWidget extends StatelessWidget {
-  const VictoryWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: const [
-        Text(
-          " Showwcase Flutter Indonesia \nmengucapkan :",
-          style: TextStyle(
-            fontFamily: 'Manrope',
-            fontSize: 20,
-            color: Colors.white,
-          ),
-          textAlign: TextAlign.center,
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Image(
-          image: AssetImage("images/hut.png"),
-          height: 150,
-          width: 150,
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Text(
-          "Dirgahayu \nIndonesiaku!",
-          style: TextStyle(
-            fontFamily: 'Manrope',
-            fontSize: 50,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-          textAlign: TextAlign.center,
-        ),
-      ],
-    );
-  }
-}
-
-class ButtonWidget extends StatelessWidget {
-  const ButtonWidget({
-    Key? key,
-    required this.onClicked,
-    required this.text,
-    this.backgroundColor = Colors.black,
-    this.color = Colors.white,
-  }) : super(key: key);
-
-  final String text;
-  final Color color;
-  final Color backgroundColor;
-  final VoidCallback onClicked;
-
-  @override
-  Widget build(BuildContext context) => ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          primary: backgroundColor,
-          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-        ),
-        onPressed: onClicked,
-        child: Text(
-          text,
-          style: TextStyle(fontSize: 20, color: color),
-        ),
-      );
 }
