@@ -16,10 +16,12 @@ class _TimerPageState extends State<TimerPage> {
   int seconds = maxSeconds;
   Timer? timer;
 
+  //Reset Function
   void resetTimer() => setState(
         () => seconds = maxSeconds,
       );
 
+  //Start Function
   void startTimer({bool reset = true}) {
     if (reset) {
       resetTimer();
@@ -28,23 +30,12 @@ class _TimerPageState extends State<TimerPage> {
     timer = Timer.periodic(const Duration(seconds: 1), (_) {
       if (seconds > 0) {
         setState(() => seconds--);
-      } else {
-        stopTimer(reset: false);
       }
     });
   }
 
-  void stopTimer({bool reset = true}) {
-    if (reset) {
-      resetTimer();
-    }
-
-    setState(
-      () => timer?.cancel(),
-    );
-  }
-
   @override
+  //Main Widget
   Widget build(BuildContext context) => Scaffold(
         body: Center(
           child: Column(
@@ -60,6 +51,7 @@ class _TimerPageState extends State<TimerPage> {
         ),
       );
 
+  //Button Widget
   Widget buildButtons() {
     final isRunning = timer == null ? false : timer!.isActive;
     final isCompleted = seconds == maxSeconds || seconds == 0;
@@ -86,6 +78,7 @@ class _TimerPageState extends State<TimerPage> {
           );
   }
 
+  //Content Widget
   Widget buildTime() {
     if (seconds == 0) {
       return const VictoryWidget();
